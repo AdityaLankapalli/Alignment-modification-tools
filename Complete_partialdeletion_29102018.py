@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+## Created by Aditya and modifications suggested by Felix Key
 ###USAGE: python3 completedeletioncode.py <fasta_filename> <percentage_of_deletion> <output_filename> <0 for variant sites only; anyother number above 0 for including invariant sites> '####
 '''
 Script filters sites that contain N in any seq in multifasta
@@ -7,8 +7,6 @@ Script filters sites that contain N in any seq in multifasta
 '''
 
 import argparse,sys
-
-''' positional and optional argument parser'''
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
                                  description='''\
