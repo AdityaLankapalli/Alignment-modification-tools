@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse,sys,os,time
-parser = argparse.ArgumentParser(prog='FS_Extractinator',usage='./FS_Extractinator.py [-h] [-i INPUT_FASTA] [-o OUTPUT_FASTA] [-f FLANKIG_SIZE] [-S START_POSITION] [-E END_POSITION] [-l SEQ_LENGTH] [-g] \n python3 FS_Extractinator.py [-h] [-i INPUT_FASTA] [-o OUTPUT_FASTA] [-f FLANKIG_SIZE] [-S START_POSITION] [-E END_POSITION] [-l SEQ_LENGTH] [-g]',description='''\
-	Extracts regions with flanking bases upstream and downstream for a specific position, given a fasta file. Applicable to multiple sequences.
+parser = argparse.ArgumentParser(prog='FS_Extractinator',usage='./FS_Extractinator.py [-h] [-i INPUT_FASTA] [-o OUTPUT_FASTA] [-f FLANKIG_SIZE] [-S START_POSITION] [-E END_POSITION] [-l SEQ_LENGTH] [-g] \n python3 FS_Extractinator.py [-h] [-i INPUT_FASTA] [-o OUTPUT_FASTA] [-f FLANKIG_SIZE] [-S START_POSITION] [-E END_POSITION] [-l SEQ_LENGTH] [-g]',
+	description='''Extracts regions with flanking bases upstream and downstream for a specific position, given a fasta file. Applicable to multiple sequences.
 	''',
 								 epilog="Please send your suggestions and comments to Aditya  < lankapalli@shh.mpg.de >;) ")
 parser.add_argument("-i", "--input",dest="input_fasta", help="Input multifasta")
