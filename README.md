@@ -20,3 +20,11 @@ Arguments in detail
 -p  Percentage for partial deletion, default [100] is for complete deletion
 -n  Set flag to print non-varaible sites too [False]
 
+# FS_Extractinator.py
+Script to extract upstream and downstream sequences for a specificed region
+<br>
+requires Python>=3.6
+<br>
+chmod 755 FS_Extractinator.py
+<br>
+completedeletioncode.py -f <fasta_filename> -p <percentage_of_deletion> -o <output_filename> -l <seq_wrap_length> -n [include non-variable sites or variable sites only]
