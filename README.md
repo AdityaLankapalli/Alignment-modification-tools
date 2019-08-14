@@ -1,5 +1,5 @@
 # Alignment-modification-tools
-Create and Modify genome-wide alignments
+_Create and Modify genome-wide alignments_
 
 # Complete_Partialdeletion.py
 Scripts to create alignments after deletion of gaps
@@ -13,7 +13,7 @@ completedeletioncode.py -f <fasta_filename> -p <percentage_of_deletion> -o <outp
 {Also can be used as python3 completedeletioncode.py [options]}
 <br>
 <br>
-Arguments in detail
+**Arguments in detail**
 
 -f  Input multifasta file<br>
 -o  Output prefix for multifasta file<br>
@@ -29,9 +29,10 @@ requires Python>=3.6
 <br>
 chmod 755 FS_Extractinator.py
 <br>
+`
 FS_Extractinator.py -i <multi_fasta_filename> -o <output_prefix> -l <seq_wrap_length> -S <Strat position> -E <End position> -f <size of up/down flanking the sequence positions>
- 
-Arguments in detail
+ `
+**Arguments in detail**
 
 -i  Input multifasta file<br>
 -o  Output prefix<br>
