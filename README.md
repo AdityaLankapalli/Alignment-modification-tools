@@ -27,4 +27,10 @@ requires Python>=3.6
 <br>
 chmod 755 FS_Extractinator.py
 <br>
-completedeletioncode.py -f <fasta_filename> -p <percentage_of_deletion> -o <output_filename> -l <seq_wrap_length> -n [include non-variable sites or variable sites only]
+FS_Extractinator.py -i <multi_fasta_filename> -o <output_prefix> -l <seq_wrap_length>  -S <Strat position> -E <End position> -f <size of up/down flanking the sequence positions>
+-i  Input multifasta file
+-o  Output prefix
+-l  Number of bases to be printed per line in output fasta [80]
+-f  Number of bases upstream and downstream flanking the Start and the End position. Default size is 1000
+-S  Start position of the region
+-E  End position of the region
