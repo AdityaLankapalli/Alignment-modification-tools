@@ -4,13 +4,16 @@ _Create and Modify genome-wide alignments_
 # Complete_Partialdeletion.py
 Scripts to create alignments after deletion of gaps
 <br>
+### requirements
 requires Python>=3.6
 <br>
+### change permissions
 chmod 755 completedeletioncode.py
 <br>
+```
 completedeletioncode.py -f <fasta_filename> -p <percentage_of_deletion> -o <output_filename> -l <seq_wrap_length> -n [include non-variable sites or variable sites only]
-
-{Also can be used as python3 completedeletioncode.py [options]}
+```
+### _Also can be used as python3 completedeletioncode.py [options]_
 <br>
 <br>
 **Arguments in detail**
@@ -25,8 +28,10 @@ completedeletioncode.py -f <fasta_filename> -p <percentage_of_deletion> -o <outp
 # FS_Extractinator.py
 Script to extract upstream and downstream sequences for a specificed region
 <br>
+### requirements
 requires Python>=3.6
 <br>
+### change permissions
 chmod 755 FS_Extractinator.py
 <br>
 ```
