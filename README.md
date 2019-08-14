@@ -29,9 +29,8 @@ chmod 755 FS_Extractinator.py
 <br>
 FS_Extractinator.py -i <multi_fasta_filename> -o <output_prefix> -l <seq_wrap_length>  -S <Strat position> -E <End position> -f <size of up/down flanking the sequence positions>
  
-<br>
-<br>
-##  Argument in detail<br>
+## Arguments in detail
+
 -i  Input multifasta file<br>
 -o  Output prefix<br>
 -l  Number of bases to be printed per line in output fasta [80]<br>
