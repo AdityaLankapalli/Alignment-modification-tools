@@ -31,7 +31,7 @@ FS_Extractinator.py -i <multi_fasta_filename> -o <output_prefix> -l <seq_wrap_le
  
 <br>
 <br>
-## Argument in detail
+##  Argument in detail<br>
 -i  Input multifasta file<br>
 -o  Output prefix<br>
 -l  Number of bases to be printed per line in output fasta [80]<br>
