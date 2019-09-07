@@ -105,43 +105,6 @@ for j in range(0,p[0]):
 		pass
 
 
-#    if 'N' in s:
-#        pass
-#    else:
-#        m.append(s)
-
-## filter for variable sites
-#m1=[]
-#if args.allSites==False:
-#    for o in m:
-#        if (len(list(set(o))))>1:
-#            m1.append(o)
-#else:
-#    m1=m
-
-                       #del m # remove m to save resources (in case alignment is large!)
-
-## re-build fasta
-					   #Alignment1={}
-					   #a=0
-					   #for k in Alignment:
-					   #n2=[]
-					   #    for l in m1:
-					   #        n2.append(l[a])
-					   #    Alignment1[k]=[''.join(n2)]
-					   #    a=a+1
-                       
-					   #def rebuild(m1):
-					   #    Alignment1={}
-					   #    a=0
-#    for k in Alignment:
-#        n2=[]
-#        for l in m1:
-#            n2.append(l[a])
-#		Alignment1[k]=[''.join(n2)]
-#		a=a+1
-#    return(Alignment1)
-
 def rebuild(m1):
 	Alignment1={}
 	a=0
