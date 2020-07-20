@@ -27,7 +27,7 @@ out = args.out
 
 
 ## read the file and splits it and make a dictionary####
-fastaseq=list(filter(None,open(args.fasta_file).read().strip().split('>')))
+fastaseq=list(filter(None,args.fasta_file.read().strip().split('>')))
 Alignment={i.split('\n')[0]:''.join(i.split('\n')[1:]) for i in fastaseq}
 
 
@@ -73,25 +73,25 @@ for j in range(0,p):
 	w1=var_invar(s)
 	if w1[-1]>=percentage:
 		if w1[1]=='var':
-			n.append(w1[0])
+			n.append(j)
 			A[0]=A[0]+w1[2]
 			C[0]=C[0]+w1[3]
 			G[0]=G[0]+w1[4]
 			T[0]=T[0]+w1[5]
 			O[0]=O[0]+w1[6]
-			m1.append(w1[0])
+			m1.append(j)
 		elif w1[1]=='invar':
-			n1.append(w1[0])
+			n1.append(j)
 			A[1]=A[1]+w1[2]
 			C[1]=C[1]+w1[3]
 			G[1]=G[1]+w1[4]
 			T[1]=T[1]+w1[5]
 			O[1]=O[1]+w1[6]
-			m1.append(w1[0])
+			m1.append(j)
 	else:
 		pass
 
-
+'''
 def rebuild(m1):
 	Alignment1={}
 	a=0
@@ -102,7 +102,17 @@ def rebuild(m1):
 		Alignment1[k]=[''.join(n2)]
 		a=a+1
 	return(Alignment1)
-
+'''
+def rebuild(M1):
+	''' reconstructs the alignment for selected sites'''
+	newAlignment={}
+	for k in Alignment:
+		n2=[]
+		n2+=list(map(lambda x:Alignment[str(k)][x],M1))
+		newAlignment[str(k)]=''.join(n2)
+	return(newAlignment)
+		
+		
 
 if args.allSites==False:
 	Alignment1=rebuild(n)
@@ -137,7 +147,7 @@ o = args.out
 for i in Alignment1:
     # o.write('>'+str(i)+'\n'+Alignment1[str(i)][0]+'\n')
     o.write('>'+str(i)+'\n')
-    sequence = Alignment1[str(i)][0]
+    sequence = Alignment1[str(i)]
     while len(sequence) > 0:
         o.write(sequence[:seq_length]+'\n')
         sequence = sequence[seq_length:]
