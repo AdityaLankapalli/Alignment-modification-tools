@@ -24,24 +24,21 @@ args = parser.parse_args()
 out = args.out
 
 
-## read the file and splits it and make a hash table####
-with args.fasta_file as f:
-    g=f.read().strip().split('>')
+## read the file and splits it and make a dictionary####
+fastaseq=list(filter(None,open(args.fasta_file).read().strip().split('>')))
+Alignment={i.split('\n')[0]:''.join(i.split('\n')[1:]) for i in fastaseq}
 
-Alignment={}
-for i in g[1:]:
-    Alignment[i.split('\n')[0]]=[''.join(i.split('\n')[1:])]
 
 ### Calculate the length of Alignment ###
-
-length=[]
-for i in Alignment:
-    length.append(len(Alignment[str(i)][0][0:]))
-###select for seqeunces within the percentage of deletion ####
-
-p=list(set(length))
+p=set([len(Alignment[str(i)]) for i in Alignment])
 if len(p)>1:
 	sys.exit(' All the sequences in the alignment are of not same length')
+else:
+	pass
+
+###select for seqeunces within the percentage of deletion ####
+
+
 
 
 
@@ -55,17 +52,17 @@ def var_invar(s):
     if (len(list(set(s))))>1:
         F.append('var')
         F.append(s.count('A')/len(s))
-        F.append(s.count('T')/len(s))
-        F.append(s.count('G')/len(s))
         F.append(s.count('C')/len(s))
-        F.append(1-((s.count('A')/len(s))+(s.count('T')/len(s))+(s.count('G')/len(s))+(s.count('C')/len(s))))
+        F.append(s.count('G')/len(s))
+        F.append(s.count('T')/len(s))
+        F.append(1-((s.count('A')/len(s))+(s.count('C')/len(s))+(s.count('G')/len(s))+(s.count('T')/len(s))))
     else:
         F.append('invar')
         F.append(s.count('A')/len(s))
-        F.append(s.count('T')/len(s))
-        F.append(s.count('G')/len(s))
         F.append(s.count('C')/len(s))
-        F.append(1-((s.count('A')/len(s))+(s.count('T')/len(s))+(s.count('G')/len(s))+(s.count('C')/len(s))))
+        F.append(s.count('G')/len(s))
+        F.append(s.count('T')/len(s))
+        F.append(1-((s.count('A')/len(s))+(s.count('C')/len(s))+(s.count('G')/len(s))+(s.count('T')/len(s))))
     return(F)
 
 
