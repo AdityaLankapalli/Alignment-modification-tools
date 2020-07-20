@@ -91,18 +91,7 @@ for j in range(0,p):
 	else:
 		pass
 
-'''
-def rebuild(m1):
-	Alignment1={}
-	a=0
-	for k in Alignment:
-		n2=[]
-		for l in m1:
-			n2.append(l[a])
-		Alignment1[k]=[''.join(n2)]
-		a=a+1
-	return(Alignment1)
-'''
+
 def rebuild(M1):
 	''' reconstructs the alignment for selected sites'''
 	newAlignment={}
@@ -145,7 +134,6 @@ print("Number of Other sites:",O[1])
 seq_length = args.seq_length
 o = args.out
 for i in Alignment1:
-    # o.write('>'+str(i)+'\n'+Alignment1[str(i)][0]+'\n')
     o.write('>'+str(i)+'\n')
     sequence = Alignment1[str(i)]
     while len(sequence) > 0:
