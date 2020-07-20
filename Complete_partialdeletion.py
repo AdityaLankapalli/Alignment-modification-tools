@@ -23,7 +23,7 @@ args = parser.parse_args()
 
 nucbases=['A','C','G','T']
 percentage=args.percentage
-out = args.out
+
 
 
 ## read the file and splits it and make a dictionary####
@@ -63,8 +63,8 @@ def var_invar(s):
 
 
 ## build alignment matrix (lol) and filter for N (i.e. complete deletion)
-n=n1=m1=[]
-A=C=G=T=O=[0,0]
+n=[];n1=[];m1=[];
+A=[0,0];C=[0,0];G=[0,0];T=[0,0];O=[0,0];
 for j in range(0,p):
 	s=[]
 	w1=None
