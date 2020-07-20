@@ -7,6 +7,7 @@ Script filters sites that contain N in any seq in multifasta
 '''
 
 import argparse,sys
+from collections import Counter
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
                                  description='''\
@@ -20,7 +21,8 @@ parser.add_argument("-p", "--percentage", dest="percentage", help="Percentage fo
 parser.add_argument('-n', dest="allSites", help="Set flag to print non-varaible sites too [False]", action='store_true', default=False) # default= not necessary as implied by action
 args = parser.parse_args()
 
-
+nucbases=['A','C','G','T']
+percentage=args.percentage
 out = args.out
 
 
@@ -31,10 +33,10 @@ Alignment={i.split('\n')[0]:''.join(i.split('\n')[1:]) for i in fastaseq}
 
 ### Calculate the length of Alignment ###
 p=set([len(Alignment[str(i)]) for i in Alignment])
-if len(p)>1:
+if len(p)!=1:
 	sys.exit(' All the sequences in the alignment are of not same length')
 else:
-	pass
+	p=p.pop()
 
 ###select for seqeunces within the percentage of deletion ####
 
@@ -42,41 +44,28 @@ else:
 
 
 
-nucbases=['A','C','G','T']
-percentage=args.percentage
+
 
 def var_invar(s):
     '''Identifies if a site is Variable or Invariable and makes a count of the bases'''
-    F=[]
-    F.append(s)
-    if len(set(s))>1:
-        F.append('var')
-        F.append(s.count('A')/len(s))
-        F.append(s.count('C')/len(s))
-        F.append(s.count('G')/len(s))
-        F.append(s.count('T')/len(s))
-        F.append(1-((s.count('A')/len(s))+(s.count('C')/len(s))+(s.count('G')/len(s))+(s.count('T')/len(s))))
-    else:
-        F.append('invar')
-        F.append(s.count('A')/len(s))
-        F.append(s.count('C')/len(s))
-        F.append(s.count('G')/len(s))
-        F.append(s.count('T')/len(s))
-        F.append(1-((s.count('A')/len(s))+(s.count('C')/len(s))+(s.count('G')/len(s))+(s.count('T')/len(s))))
-    return(F)
+	F=[]
+	basecomp=None
+	F.append(s)
+	basecomp=list(map(lambda x:Counter(s).__getitem__(x)/len(s),['A','C','G','T']))
+	if len(set(s))>1:
+		F.append('var')
+	else:
+		F.append('invar')
+	F+=basecomp
+	F+=[1-sum(basecomp)]
+	return(F)
 
 
 
 ## build alignment matrix (lol) and filter for N (i.e. complete deletion)
-n=[]
-n1=[]
-m1=[]
-A=[0,0]
-T=[0,0]
-G=[0,0]
-C=[0,0]
-O=[0,0]
-for j in range(0,p[0]):
+n=n1=m1=[]
+A=C=G=T=O=[0,0]
+for j in range(0,p):
 	s=[]
 	for i in Alignment:
 		s.append(Alignment[i][0][j])
