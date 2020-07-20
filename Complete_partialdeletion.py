@@ -47,7 +47,7 @@ else:
 
 
 def var_invar(s):
-    '''Identifies if a site is Variable or Invariable and makes a count of the bases'''
+	'''Identifies if a site is Variable or Invariable and makes a count of the bases'''
 	F=[]
 	basecomp=None
 	F.append(s)
