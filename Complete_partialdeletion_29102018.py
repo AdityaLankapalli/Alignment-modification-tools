@@ -42,14 +42,14 @@ else:
 
 
 
-nucbases=['A','T','G','C']
+nucbases=['A','C','G','T']
 percentage=args.percentage
 
 def var_invar(s):
     '''Identifies if a site is Variable or Invariable and makes a count of the bases'''
     F=[]
     F.append(s)
-    if (len(list(set(s))))>1:
+    if len(set(s))>1:
         F.append('var')
         F.append(s.count('A')/len(s))
         F.append(s.count('C')/len(s))
