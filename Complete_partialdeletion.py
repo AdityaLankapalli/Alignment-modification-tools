@@ -57,7 +57,7 @@ def var_invar(s):
 	else:
 		F.append('invar')
 	F+=basecomp
-	F+=[1-sum(basecomp)]
+	F+=[1-sum(basecomp),sum(basecomp)*100]
 	return(F)
 
 
@@ -67,24 +67,25 @@ n=n1=m1=[]
 A=C=G=T=O=[0,0]
 for j in range(0,p):
 	s=[]
+	w1=None
 	for i in Alignment:
-		s.append(Alignment[i][0][j])
-	if (((s.count('A')+s.count('T')+s.count('G')+s.count('C'))/len(s))*100)>=percentage:
-		w1=var_invar(s)
+		s.append(Alignment[str(i)][j])
+	w1=var_invar(s)
+	if w1[-1]>=percentage:
 		if w1[1]=='var':
 			n.append(w1[0])
 			A[0]=A[0]+w1[2]
-			T[0]=T[0]+w1[3]
+			C[0]=C[0]+w1[3]
 			G[0]=G[0]+w1[4]
-			C[0]=C[0]+w1[5]
+			T[0]=T[0]+w1[5]
 			O[0]=O[0]+w1[6]
 			m1.append(w1[0])
 		elif w1[1]=='invar':
 			n1.append(w1[0])
 			A[1]=A[1]+w1[2]
-			T[1]=T[1]+w1[3]
+			C[1]=C[1]+w1[3]
 			G[1]=G[1]+w1[4]
-			C[1]=C[1]+w1[5]
+			T[1]=T[1]+w1[5]
 			O[1]=O[1]+w1[6]
 			m1.append(w1[0])
 	else:
@@ -112,7 +113,7 @@ else:
 
 
 ##Reporting the Sequences and proportion of Nucleotides
-print("Total Number of Sites in Alignment before deletion :",p[0])
+print("Total Number of Sites in Alignment before deletion :",p)
 print('\n')
 print("Total Number of Sites in Alignment after "+str(percentage)+" deletion",len(m1))
 print('\n')
