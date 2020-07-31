@@ -2,8 +2,7 @@
 ## Created by Aditya and modifications suggested by Felix Key
 ###USAGE: python3 completedeletioncode.py <fasta_filename> <percentage_of_deletion> <output_filename> <0 for variant sites only; anyother number above 0 for including invariant sites> '####
 '''
-Script filters sites that contain N in any seq in multifasta
-4th argument set to 0, will filter in addition for variable sites only (i.e. >1 non-N character!)
+Script filters sites that contain N in multifasta alignment
 '''
 
 import argparse,sys
@@ -13,7 +12,7 @@ parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpForm
                                  description='''\
     Filters MultiFasta for CompleteDeletion (i.e. removes sites w/ "N"), and for invariable sites (if specified)
                                 ''',
-                                epilog="Questions or comments to Adytia ;) ")
+                                epilog="Questions or comments to Aditya ;) ")
 parser.add_argument("-f", dest="fasta_file", help="Input multifasta", type=argparse.FileType('rt'))
 parser.add_argument("-o", "--out_fasta", dest="out", help="Output multifasta", type=argparse.FileType('w'),default=sys.stdout)
 parser.add_argument("-l", "--seq_length", dest="seq_length", help="Number of bases to be printed per line in output fasta [100]", type=int,default=100)
@@ -65,6 +64,7 @@ def var_invar(s):
 ## build alignment matrix (lol) and filter for N (i.e. complete deletion)
 n=[];n1=[];m1=[];
 A=[0,0];C=[0,0];G=[0,0];T=[0,0];O=[0,0];
+Ambiguous=open(str(args.out.name)+'_filteredsites.txt','w');
 for j in range(0,p):
 	s=[]
 	w1=None
@@ -89,8 +89,9 @@ for j in range(0,p):
 			O[1]=O[1]+w1[6]
 			m1.append(j)
 	else:
-		pass
+		Ambiguous.write(str(j)+'\n')
 
+Ambiguous.close()
 
 def rebuild(M1):
 	''' reconstructs the alignment for selected sites'''
